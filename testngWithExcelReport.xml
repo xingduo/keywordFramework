@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- thread-count 定义同时启动的浏览器数 、parallel="tests" 表明每个test都是平级的 -->
+<suite name="keyword_framework" parallel="tests" thread-count="2">
+	<!-- chrome,firefox,ghost和ie不区分大小写 -->
+	<parameter name="browserName" value="chrome" />
+	<!-- driver的属性配置文件保存路径 -->
+	<parameter name="driverConfgFilePath" value="config/driver.properties" />
+	<!-- 定义测试的站点 -->
+	<parameter name="testurl" value="http://127.0.0.1:8080/BBS" />
+	<!-- 进程等待1秒中的控制时间 -->
+	<parameter name="sleepTime" value="800" />
+	<!-- 页面元素10秒不出现超时时间 -->
+	<parameter name="timeOut" value="20" />
+	<!-- 这个是等待alert弹出的时间 单位毫秒 -->
+	<parameter name="waitMillisecondsForAlert" value="40000" />
+
+
+	<!-- 定义测试模块，用test标签包围 -->
+
+	<test name="登录" preserve-order="true">
+		<packages>
+			<package name="com.demo.test.testcase.login" />
+		</packages>
+	</test>
+
+	<!-- excel收集测试报告插件 -->
+	<listeners>
+			<listener class-name="com.incito.excelReporter.TestResultListener" />
+			<listener class-name="com.incito.excelReporter.ExcelReporter" />
+	</listeners>
+
+</suite> 
